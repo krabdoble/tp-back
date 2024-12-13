@@ -44,6 +44,10 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   })
 
+  dbConnection.authenticate()
+  .then(() => console.log('Conexión exitosa a MySQL'))
+  .catch(err => console.error('Error al conectar:', err));
+
 app.listen(PORT,() =>{
     console.log(`listening on port ${PORT}`)
 });
