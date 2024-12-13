@@ -4,7 +4,7 @@ const { Sequelize } = require('sequelize');
 const dbConnection = new Sequelize(process.env.MYSQL_URL, {
     dialect: "mysql",
     logging: false,
-    pool: {
+   /* pool: {
         max: 5,          // Máximo de conexiones en el pool
         min: 0,          // Mínimo de conexiones
         acquire: 30000,  // Tiempo máximo para adquirir una conexión (ms)
@@ -12,9 +12,11 @@ const dbConnection = new Sequelize(process.env.MYSQL_URL, {
       },
       dialectOptions: {
         connectTimeout: 10000, // Tiempo de espera para conectar (ms)
-      },
+      },*/
     
 });
+
+//MYSQL_URL=mysql://root: @containers-us-west-xx.railway.app:3306/proyecto-final
 
 /*dbConnection
   .authenticate()

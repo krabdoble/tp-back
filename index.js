@@ -1,4 +1,4 @@
-//require('dotenv').config();
+require('dotenv').config();
 const express= require('express');
 const app= express();
 const cors = require('cors');
@@ -8,8 +8,8 @@ const {dbConnection}= require("./config/dbConnection")
 
 app.use(cors({
   origin: ["https://proyecto-final-4483a.web.app"],
-  methods: 'get,POSTPUT,DELETE',
-  credentials: true,
+  /*methods: 'get,POSTPUT,DELETE',
+  credentials: true,*/
 }));
 
 /*{
@@ -19,9 +19,9 @@ app.use(cors({
 app.use(express.json());
 
 //app.use(bodyParser.json());
-if (process.env.NODE_ENV !== 'production') {
+/*if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
-  }
+  }*/
 
 
 const loginroutes= require('./routes/usuarioLoginRoute');
