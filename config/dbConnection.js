@@ -1,8 +1,6 @@
 require('dotenv').config();
 const { Sequelize } = require('sequelize');
 
-
-
 const dbConnection = new Sequelize(process.env.MYSQL_URL, {
     dialect: "mysql",
     logging: false,
@@ -18,12 +16,9 @@ const dbConnection = new Sequelize(process.env.MYSQL_URL, {
     
 });
 
-dbConnection
+/*dbConnection
   .authenticate()
   .then(() => console.log('Conexión a la base de datos exitosa.'))
-  .catch((err) => console.error('Error al conectar a la base de datos:', err));
-
-
-
+  .catch((err) => console.error('Error al conectar a la base de datos:', err));*/
 
 module.exports = {dbConnection}
