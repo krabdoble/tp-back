@@ -7,8 +7,11 @@ const {dbConnection}= require("./config/dbConnection")
 
 
 app.use(cors({
-  origin: "https://proyecto-final-4483a.web.app"
+  origin: ["https://proyecto-final-4483a.web.app"],
+  methods: 'get,POSTPUT,DELETE',
+  credentials: true,
 }));
+
 /*{
   origin: "https://proyecto-final-4483a.web.app"
 }*/
