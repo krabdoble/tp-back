@@ -44,7 +44,7 @@ let admin = require("firebase-admin")
 
 //var serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 
-var serviceAccount = require("./proyecto-final-4483a-firebase-adminsdk-qlnvs-2321e3b964.json")
+//var serviceAccount = require("./proyecto-final-4483a-firebase-adminsdk-qlnvs-2321e3b964.json")
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
