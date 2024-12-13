@@ -1,8 +1,8 @@
+//require('dotenv').config();
 const express= require('express');
 const app= express();
 const cors = require('cors');
-const bodyParser = require("body-parser");
-require('dotenv').config();
+//const bodyParser = require("body-parser");
 const {dbConnection}= require("./config/dbConnection")
 
 
@@ -13,9 +13,12 @@ app.use(cors({
   origin: "https://proyecto-final-4483a.web.app"
 }*/
 
-//app.use(express.json());
+app.use(express.json());
 
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+if (process.env.NODE_ENV !== 'production') {
+    require('dotenv').config();
+  }
 
 
 const loginroutes= require('./routes/usuarioLoginRoute');
