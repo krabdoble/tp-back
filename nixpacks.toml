@@ -1,0 +1,8 @@
+[phases.build]
+cmd = "npm install"
+
+[phases.start]
+cmd = "npm run start"
+
+[environment]
+NODE_VERSION = "18"  # Versión de Node.js que tu proyecto necesita
