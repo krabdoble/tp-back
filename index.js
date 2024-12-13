@@ -1,6 +1,7 @@
 const express= require('express');
 const app= express();
 const cors = require('cors');
+const bodyParser = require("body-parser");
 require('dotenv').config();
 const {dbConnection}= require("./config/dbConnection")
 
@@ -12,7 +13,9 @@ app.use(cors({
   origin: "https://proyecto-final-4483a.web.app"
 }*/
 
-app.use(express.json());
+//app.use(express.json());
+
+app.use(bodyParser.json());
 
 
 const loginroutes= require('./routes/usuarioLoginRoute');
