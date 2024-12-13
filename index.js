@@ -40,15 +40,29 @@ app.use('/api/producto',productoroutes)
 app.use('/api/carrito',carritoroutes)
 app.use('/api/pedido',pedidoroutes)
 
-let admin = require("firebase-admin")
+//let admin = require("firebase-admin")
 
-var serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+//var serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 
 //var serviceAccount = require("./proyecto-final-4483a-firebase-adminsdk-qlnvs-2321e3b964.json")
 
-admin.initializeApp({
+/*admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-  })
+  })*/
+
+  let admin = require("firebase-admin");
+
+try {
+  const serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
+
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+
+  console.log('Firebase Admin inicializado correctamente.');
+} catch (error) {
+  console.error('Error al inicializar Firebase Admin:', error);
+}
 
 
 app.listen(PORT,() =>{
