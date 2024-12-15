@@ -2,14 +2,14 @@ require('dotenv').config();
 const express= require('express');
 const app= express();
 const cors = require('cors');
-//const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const {dbConnection}= require("./config/dbConnection")
 
 
 app.use(cors({
   origin: ["https://proyecto-final-4483a.web.app"],
-  /*methods: 'get,POSTPUT,DELETE',
-  credentials: true,*/
+  /*methods: 'get,POSTPUT,DELETE',*/
+  credentials: true,
 }));
 
 /*{
@@ -58,6 +58,7 @@ try {
   console.log('Firebase Admin inicializado correctamente.');
 } catch (error) {
   console.error('Error al inicializar Firebase Admin:', error.message);
+  console.log('Contenido de FIREBASE_CREDENTIALS:', process.env.FIREBASE_CREDENTIALS);
 }
 
 
