@@ -1,8 +1,6 @@
 const admin = require("firebase-admin");
 const Usuarios = require("../models/usuarioModel");
 
-const admin = require("firebase-admin");
-const Usuarios = require("../models/usuarioModel");
 
 const createUsuario = async (req, res) => {
   const { displayName, email, photoURL, firebaseToken } = req.body;
