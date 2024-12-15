@@ -1,7 +1,37 @@
 const admin = require("firebase-admin");
 const Usuarios = require("../models/usuarioModel");
 
+const admin = require("firebase-admin");
+const Usuarios = require("../models/usuarioModel");
+
 const createUsuario = async (req, res) => {
+  const { displayName, email, photoURL, firebaseToken } = req.body;
+
+  try {
+    // Verificar el token de Firebase
+    const decodedToken = await admin.auth().verifyIdToken(firebaseToken);
+
+    // Buscar el usuario en la base de datos
+    let usuario = await Usuarios.findOne({ where: { email } });
+
+    // Si no existe, lo crea
+    if (!usuario) {
+      usuario = await Usuarios.create({
+        nombre: displayName,
+        email,
+        imagen: photoURL,
+      });
+    }
+
+    return res.status(200).json({ ok: true, usuario });
+  } catch (error) {
+    console.error("Error al registrar usuario:", error);
+    return res.status(500).json({ ok: false, message: "Error al registrar usuario" });
+  }
+};
+
+
+/*const createUsuario = async (req, res) => {
   const { displayName, email, photoURL, firebaseToken } = req.body;
 
   try {
@@ -25,7 +55,7 @@ const createUsuario = async (req, res) => {
     console.error("Error al registrar cliente:", error);
    return res.status(500).json({ message: "Error al registrar cliente" });
   }
-};
+};*/
 
 const getAllUsuarios = async (req, res = response) => {
     try {
