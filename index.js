@@ -40,7 +40,28 @@ app.use('/api/producto',productoroutes)
 app.use('/api/carrito',carritoroutes)
 app.use('/api/pedido',pedidoroutes)
 
-let admin = require("firebase-admin")
+let admin = require("firebase-admin");
+
+try {
+  const firebaseCredentials = process.env.FIREBASE_CREDENTIALS;
+
+  if (!firebaseCredentials) {
+    throw new Error("La variable de entorno FIREBASE_CREDENTIALS no está definida.");
+  }
+
+  const serviceAccount = JSON.parse(firebaseCredentials);
+
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+
+  console.log('Firebase Admin inicializado correctamente.');
+} catch (error) {
+  console.error('Error al inicializar Firebase Admin:', error.message);
+}
+
+
+/*let admin = require("firebase-admin")
 
 //var serviceAccount = JSON.parse(process.env.FIREBASE_CREDENTIALS);
 
