@@ -14,8 +14,8 @@ const Producto = dbConnection.define("Producto", {
     
 });
 
-Producto.belongsTo(Proveedor, { foreignKey: 'proveedorId' });
-Proveedor.hasMany(Producto, { foreignKey: 'proveedorId' });
+Producto.belongsTo(Proveedor, { foreignKey: 'proveedor' });
+Proveedor.hasMany(Producto, { foreignKey: 'proveedor' });
 
 Producto.sync({alter: true})
   .then(() => {
