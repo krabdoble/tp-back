@@ -5,7 +5,7 @@ const path = require('path');
 
 const controller = require('../controllers/productoController');
 
-//const {validarFirebase} = require('../middlewares/validatorFirebase.js');
+const {validarFirebase} = require('../middlewares/validatorFirebase.js');
 
 
 
@@ -20,10 +20,10 @@ const dikstorage = multer.diskStorage({
 
 const fileUpload = multer({ storage: dikstorage }).single('imagen');
 
-router.get('/'/*,[validarFirebase]*/, controller.getAllProductos)
-router.post('/', fileUpload, controller.createProducto)
-router.put('/:id',fileUpload, controller.updateProducto)
-router.delete('/:id', controller.deleteProducto)
-router.get('/:id'/*,[validarFirebase]*/, controller.getProductoById)
+router.get('/',[validarFirebase], controller.getAllProductos)
+router.post('/',[validarFirebase], fileUpload, controller.createProducto)
+router.put('/:id',[validarFirebase],fileUpload, controller.updateProducto)
+router.delete('/:id',[validarFirebase], controller.deleteProducto)
+router.get('/:id',[validarFirebase], controller.getProductoById)
 
 module.exports =router;
