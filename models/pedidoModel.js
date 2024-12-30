@@ -12,6 +12,7 @@ const Pedido = dbConnection.define("Pedido", {
     suma_total: { type: DataTypes.FLOAT, allowNull: false },
     fecha_entrega: { type: DataTypes.DATE, allowNull: false },
     productoId: { type: DataTypes.INTEGER,  references: { model: Producto, key: 'id' }},
+    clienteId: { type: DataTypes.INTEGER,  references: { model: Cliente, key: 'id' }},
 });
 
 Pedido.belongsTo(Producto, { foreignKey: 'productoId' });
