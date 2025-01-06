@@ -28,33 +28,6 @@ const createUsuario = async (req, res) => {
   }
 };
 
-
-/*const createUsuario = async (req, res) => {
-  const { displayName, email, photoURL, firebaseToken } = req.body;
-
-  try {
-    await admin
-      .auth()
-      .verifyIdToken(firebaseToken)
-      .then((decodedToken) => {
-        const uid = decodedToken.uid;
-       return res.json({ ok: true });
-      });
-    let cliente = await Usuarios.findOne({ where: { email } });
-    if (!cliente) {
-      cliente = await Usuarios.create({
-        nombre: displayName,
-        email,
-        imagen: photoURL,
-      });
-    }
-
-  } catch (error) {
-    console.error("Error al registrar cliente:", error);
-   return res.status(500).json({ message: "Error al registrar cliente" });
-  }
-};*/
-
 const getAllUsuarios = async (req, res = response) => {
     try {
         const usuario = await Usuarios.findAll();
